@@ -20,11 +20,12 @@ sudo ln -s $(pwd)/allin1 /usr/local/bin/allin1
 ```
 
 ## Usage
--allin1 list
--allin1 search nmap
--allin1 save nmap "Basic nmap scan" "nmap -sC -sV target"
--allin1 run nmap scan
-
+```bash
+allin1 list
+allin1 search nmap
+allin1 save nmap "Basic nmap scan" "nmap -sC -sV target"
+allin1 run nmap scan
+```
 ## Version
 v0.1 – Initial Release
 
