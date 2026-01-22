@@ -1,0 +1,2 @@
+nmap|Basic Scan|nmap {target}
+nmap|Stealth Scan|nmap -sS {target}
