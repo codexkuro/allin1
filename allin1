@@ -1,0 +1,63 @@
+#!/usr/bin/bash
+# ========================
+# Resolve BASE_DIR (SYMLINK SAFE)
+# ========================
+BASE_DIR="$HOME/allin1"
+CORE_DIR="$BASE_DIR/core"
+export BASE_DIR
+export CORE_DIR
+# ========================
+# Load Core Files
+# ========================
+source "$CORE_DIR/config.sh"
+source "$CORE_DIR/runner.sh"
+source "$CORE_DIR/commands.sh"
+
+# ========================
+# Banner
+# ========================
+echo -e "\n${CYAN}$APP_NAME $VERSION - $DESCRIPTION${RESET}\n"
+
+# ========================
+# Command Dispatcher
+# ========================
+COMMAND="${1:-}"
+
+case "$COMMAND" in
+save)
+  [ -z "${2:-}" ] && {
+    echo -e "${RED}[!]${RESET} Tool name required"
+    exit 1
+  }
+  [ -z "${3:-}" ] && {
+    echo -e "${RED}[!]${RESET} Description required"
+    exit 1
+  }
+  [ -z "${4:-}" ] && {
+    echo -e "${RED}[!]${RESET} Command required"
+    exit 1
+  }
+  save_commands "$2" "$3" "$4"
+  ;;
+list)
+  list_commands
+  ;;
+search)
+  search_commands "${2:-}"
+  ;;
+run)
+  run_command "${2:-}" "${3:-}"
+  ;;
+--help | -h)
+  printf "${YELLOW}Usage:${RESET} allin1 {save|list|search|run}"
+  printf "\n${YELLOW}Description of commands:${RESET}\n\tsave : Save a custom command\n\tlist : List of saved commands\n\tsearch : Search a command\n\trun : Run a command\n"
+  ;;
+--author)
+  printf "${CYAN}Built by Akbar (@akbrsmh)${RESET}\n"
+  ;;
+*)
+  echo -e "${RED}[!]${RESET} Unknown command: $COMMAND"
+  printf "${YELLOW}Usage:${RESET} allin1 {save|list|search|run}"
+  printf "\n${YELLOW}Useful commands:${RESET}\n\t--help/-h : Detail information about allin1\n\t--author : The creator of allin1\n"
+  ;;
+esac
