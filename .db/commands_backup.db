@@ -1,7 +1,0 @@
-nmap|Basic Scan|nmap -sS {target}
-steghide|Extract stego files|steghide extract -sf {file}
-nmap|Kind of detailed scan + Stealth|nmap -sS -sC -sV {target}
-sherlock|Search username|sherlock {username}
-dirb|Basic enumeration|dirb {target}
-fusion|Read file and grep spesific word/sentences|cat {file} | grep "{word}"
-fusion|Basic scan type file|ls | file {file}
