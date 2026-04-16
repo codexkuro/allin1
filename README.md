@@ -17,7 +17,6 @@
 ## ⚙️ Installation
 
 ```bash
-```
 1. **Clone the repo**
    git clone [https://github.com/codexkuro/allin1.git](https://github.com/codexkuro/allin1.git)
    cd allin1
@@ -33,3 +32,4 @@
    python src/main.py
 
 Made with ❤️ by codexkuro
+```
