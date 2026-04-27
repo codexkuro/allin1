@@ -5,7 +5,14 @@
 </p>
 
 # allin1 - Command Memory Tool for Cyber Security
+<p>
+  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
+  <img src="https://img.shields.io/badge/version-v0.1.0-blue">
+</p>
 
+# allin1 - Command Memory Tool for Cyber Security
+
+>>>>>>> 6d57324 (Change on a readme file, adding version)
 **allin1** is a lightweight CLI tool designed to solve the common problem of forgetting complex cybersecurity commands (like `nmap`, `msfvenom`, etc.). Instead of scrolling through `history`, just save it once and run it anytime!
 
 ## ✨ Key Features
