@@ -1,7 +1,7 @@
 import sqlite3
-
+from pathlib import Path
 def create_commands_table():
-    conn = sqlite3.connect('./data/commands.db')
+    conn = sqlite3.connect(Path(__file__).parent.parent / 'data' / 'commands.db')
     cursor = conn.cursor()
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS commands (
@@ -18,7 +18,7 @@ def create_commands_table():
 
 def save_command_to_db(tool, command, category, note):
     """Save commands to database"""
-    conn = sqlite3.connect('./data/commands.db')
+    conn = sqlite3.connect(Path(__file__).parent.parent / 'data' / 'commands.db')
     cursor = conn.cursor()
     cursor.execute('''
     INSERT INTO commands (tool, command, category, note) 
@@ -32,7 +32,7 @@ def save_command_to_db(tool, command, category, note):
 
 def get_all_commands():
     """Select all commands from database"""
-    conn = sqlite3.connect('./data/commands.db')
+    conn = sqlite3.connect(Path(__file__).parent.parent / 'data' / 'commands.db')
     cursor = conn.cursor()
     cursor.execute("SELECT id, tool, command, category, note FROM commands ORDER BY id ASC")
     results = cursor.fetchall()
@@ -41,7 +41,7 @@ def get_all_commands():
 
 def search_commands(keyword):
     """Search commands by keyword"""
-    conn = sqlite3.connect('./data/commands.db')
+    conn = sqlite3.connect(Path(__file__).parent.parent / 'data' / 'commands.db')
     cursor = conn.cursor()
     cursor.execute('''
     SELECT id, tool, command, category, note 
@@ -55,7 +55,7 @@ def search_commands(keyword):
 
 def delete_command_by_id(command_id):
     """Hapus command berdasarkan ID"""
-    conn = sqlite3.connect('./data/commands.db')
+    conn = sqlite3.connect(Path(__file__).parent.parent / 'data' / 'commands.db')
     cursor = conn.cursor()
     cursor.execute("DELETE FROM commands WHERE id = ?", (command_id,))
     conn.commit()

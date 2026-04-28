@@ -2,7 +2,7 @@
   <img src="https://img.shields.io/badge/Author-codexkuro-orange?style=for-the-badge">
   <img src="https://img.shields.io/badge/VIM-%2311AB00.svg?style=for-the-badge&logo=vim&logoColor=white">
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
-  <img src="https://img.shields.io/badge/version-v0.1.0-blue">
+  <img src="https://img.shields.io/badge/version-v0.2.0-blue">
 </p>
 
 # allin1 - Command Memory Tool for Cyber Security
@@ -14,6 +14,9 @@
 - **Variables Support**: Save commands like `nmap <target>` and the tool will prompt for the value.
 - **Secure Execution**: Built-in protection against command injection using `subprocess`.
 - **Interactive UI**: Clean and colorful terminal interface.
+- Multi-Command Execution: Select multiple commands and run them sequentially
+- Logging: Asking the user if they want to save the commands result to a file
+
 
 ## ⚙️ Installation
 

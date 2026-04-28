@@ -3,6 +3,8 @@ import database as db
 from console import console, style, red_console, blue_console, green_console
 from rich.panel import Panel
 import subprocess
+from pathlib import Path
+from pick import pick
 from utils import remove_placeholders
 
 def save():
@@ -105,6 +107,64 @@ def run_command():
             print("\n❌ Command ID not found")
     except ValueError:
         print("\n❌ Invalid ID!")
+
+def run_multiple():
+
+    commands = db.get_all_commands()
+
+    options = [f"[{c[0]}] {c[1]} ({c[4]}) : {c[2][:120]}" for c in commands]
+    
+    title = "\n  RUN MULTIPLE COMMAND"
+
+    selected = pick(options, title, multiselect=True, min_selection_count=1, indicator="->")
+    
+    
+    for item, index in selected:
+        try:
+            os.system("clear")
+        except:
+            os.system("cls")
+        command = commands[index][2]
+        print("="*50)
+        print(f"Command: {command}")
+        print("="*50)
+
+        if "{" in command:
+            value = input("Placeholder detected! Enter the value: ")
+            print("="*50)
+            command = remove_placeholders(command, value)
+        print("\n")
+        print("="*50)
+        RESET = "\033[0m"
+        FG_GREEN = "\033[32m"
+        FG_RED = "\033[31m"
+        result = subprocess.run(command.strip(), shell=True, capture_output=True, text=True)
+        if result.stderr:
+            print(f"{FG_RED}{result.stderr}{RESET}")
+        else:
+            print(f"{FG_GREEN}{result.stdout}{RESET}")
+        print("="*50)        
+        print("\n")
+        confirm = input("Do you want to save the output to a file? y/n : ").lower()
+
+        if confirm == 'y':
+            from datetime import datetime
+            now = datetime.now()
+            timestamp = now.strftime("%Y-%m-%d %H") # Year-Month-Date Hour (why? Cause prevent multiple files)
+            with open(Path(__file__).parent.parent / 'file' / f'{timestamp}_Log.txt', 'a') as f:
+                f.write("="*30)
+                f.write("\n")
+                f.write(f"Log {index + 1}")
+                f.write("\n")
+                f.write("="*30)
+                f.write("\n")
+                f.write(result.stdout)
+                if result.stderr:
+                    f.write(result.stderr)
+                f.write("\n")
+        else:
+            print("Okay.")
+
 
 def delete():
     """Delete Command"""

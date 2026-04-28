@@ -13,6 +13,7 @@ def main():
         "🗁 | List All Commands", 
         "⌕ | Search Command",
         "ᯓ➤ | Run Command",
+        "ᯓ➤ ᯓ➤ | Run Multiple Commands",
         "⌫ | Delete Command",
         "➜] | Exit"
     ]
@@ -36,9 +37,11 @@ def main():
             allin1.search()
         elif index == 3:    # Run
             allin1.run_command()
-        elif index == 4:    # Delete
+        elif index == 4:    # Run Multiple Commands
+            allin1.run_multiple()
+        elif index == 5:    # Delete
             allin1.delete()
-        elif index == 5:    # Exit
+        elif index == 6:    # Exit
             break
         
         input("\nPress Enter...")

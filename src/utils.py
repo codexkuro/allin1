@@ -9,4 +9,4 @@ def remove_placeholders(text, value):
     
     return hasil
 
-print(remove_placeholders("mewing {target}", "local"))
+
